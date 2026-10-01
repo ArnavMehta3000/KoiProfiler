@@ -1,0 +1,4 @@
+.xmake/
+[Bb]uild/
+vsxmake*/
+compile_commands.json
