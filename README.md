@@ -94,8 +94,6 @@ Namespace
 ---------
 Everything is in `koi::prof`, and the frame stats add-on is in `koi::prof::stats`.
 
-KoiProfiler was built for the Koi engine, which keeps its own code in `namespace koi`. The extra `prof` namespace keeps the profiler apart from the rest of the engine. Types like `Counter` or `TimeUnit`, and helpers in `internal`, can't clash with engine code that has the same names. The header can be copied into the engine, or any other project that uses `koi`, as is.
-
 If `koi::prof::` is too long to type, add a short alias, or a using-directive:
 
 ```cpp
@@ -105,10 +103,10 @@ kp::ProfilerWindow profiler;
 using namespace koi::prof;
 ProfilerWindow profiler;
 
-namespace koi = koi::prof;  // This will not work within Koi Engine
+namespace koi = koi::prof
 ```
 
-Macros can't go in a namespace, so they use their own prefixes instead:
+Macros prefixes:
 - `KOI_PROFILE`, `KOI_PROFILE_DYNAMIC`, `KOI_PROFILE_FUNCTION`, `KOI_PROFILE_COUNT`, `KOI_PROFILE_VALUE` and their hooks are the ones you use in your code.
 - `KOI_PROFILER_*` switches features on and off.
 - `KOI_PROF_*` (`KOI_PROF_ASSERT`, `KOI_PROF_FUNCTION_NAME`, `KOI_PROF_CONCAT`) are helpers.
